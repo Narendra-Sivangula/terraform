@@ -31,7 +31,7 @@ terraform/
 ├── 02-terraform-state/
 ├── 03-variables-outputs-locals/
 ├── 04-resource-dependencies/
-├── 05-count-and-for-each/
+├── 05-count/
 └── ...
 ````
 
@@ -45,8 +45,8 @@ terraform/
 * [x] Variables
 * [x] Outputs
 * [x] Local Values
-* [ ] Resource Dependencies
-* [ ] `count`
+* [x] Resource Dependencies
+* [x] count
 * [ ] `for_each`
 
 ### Intermediate
@@ -168,10 +168,3 @@ The objective of this learning journey is to gain strong hands-on Terraform skil
 * Site Reliability Engineering (SRE)
 * Cloud Engineering
 * Platform Engineering
-
----
-
-⭐ This repository will continue to grow as I progress from Terraform fundamentals to advanced Infrastructure as Code concepts.
-
-
-This is a good starting README for GitHub. As you complete more lessons, we can update the checkboxes and eventually add a **Projects section** with larger DevOps/SRE infrastructure projects.
