@@ -51,7 +51,7 @@ terraform/
 
 ### Intermediate
 
-* [ ] Data Sources
+* [x] Data Sources
 * [ ] Terraform Functions
 * [ ] Dynamic Blocks
 * [ ] Lifecycle Rules
