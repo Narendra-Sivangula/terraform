@@ -47,7 +47,7 @@ terraform/
 * [x] Local Values
 * [x] Resource Dependencies
 * [x] count
-* [ ] `for_each`
+* [x] for_each
 
 ### Intermediate
 
