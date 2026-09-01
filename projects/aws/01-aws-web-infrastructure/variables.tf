@@ -42,3 +42,14 @@ variable "public_subnets" {
     }
   }
 }
+
+variable "allowed_ssh_cidr" {
+  description = "CIDR block allowed to SSH into the EC2 instance"
+  type        = string
+}
+
+variable "instance_type" {
+  description = "EC2 instance type for the web server"
+  type        = string
+  default     = "t3.micro"
+}

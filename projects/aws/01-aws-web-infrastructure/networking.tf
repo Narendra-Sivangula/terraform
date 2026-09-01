@@ -22,3 +22,30 @@ resource "aws_subnet" "public" {
     Type = "Public"
   })
 }
+
+# --------- INTERNET GATEWAY ------------
+resource "aws_internet_gateway" "main" {
+  vpc_id = aws_vpc.main.id
+  tags = merge(local.common_tags, {
+    Name = "${local.name_prefix}-igw"
+  })
+}
+
+# ---------- ROUTE TABLE --------------
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.main.id
+  route {
+    gateway_id = aws_internet_gateway.main.id
+    cidr_block = "0.0.0.0/0"
+  }
+  tags = merge(local.common_tags, {
+    Name = "${local.name_prefix}-rt"
+  })
+}
+
+# --- Associate public subnets with public route tables -----
+resource "aws_route_table_association" "public" {
+  for_each       = aws_subnet.public
+  subnet_id      = each.value.id
+  route_table_id = aws_route_table.public.id
+}

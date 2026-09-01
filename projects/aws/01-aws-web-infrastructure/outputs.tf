@@ -26,3 +26,22 @@ output "public_subnet_ids" {
     key => subnet.id
   }
 }
+
+output "gateway" {
+  value = aws_internet_gateway.main.tags_all
+}
+
+output "web_security_group_id" {
+  description = "Security Group ID for the web server"
+  value       = aws_security_group.web.id
+}
+
+output "web_server_public_ip" {
+  description = "Public IP address of web server"
+  value       = aws_instance.web.public_ip
+}
+
+output "web_server_public_dns" {
+  description = "Public DNS of web server"
+  value       = aws_instance.web.public_dns
+}
