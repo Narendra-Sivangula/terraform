@@ -31,6 +31,8 @@ resource "aws_instance" "web" {
                 systemctl enable nginx
                 systemctl start nginx
                 EOF
+
+  iam_instance_profile = aws_iam_instance_profile.ec2.name
   tags = merge(local.common_tags, {
     Name = "${local.name_prefix}-web-server"
   })
