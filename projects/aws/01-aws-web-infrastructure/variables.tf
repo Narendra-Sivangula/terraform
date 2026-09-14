@@ -16,15 +16,26 @@ variable "environment" {
   default     = "dev"
 }
 
+variable "allowed_ssh_cidr" {
+  description = "CIDR block allowed to SSH into the EC2 instance"
+  type        = string
+}
+
+variable "instance_type" {
+  description = "EC2 instance type for the web server"
+  type        = string
+  default     = "t3.micro"
+}
+
 variable "vpc_cidr" {
-  description = "CIDR block for vpc"
+  description = "CIDR block for the VPC"
   type        = string
   default     = "10.0.0.0/16"
 }
 
-# -------- SUBNETS ----------
 variable "public_subnets" {
-  description = "Public Subnets to create"
+  description = "Public subnets to create"
+
   type = map(object({
     cidr = string
     az   = string
@@ -41,15 +52,4 @@ variable "public_subnets" {
       az   = "ap-south-2b"
     }
   }
-}
-
-variable "allowed_ssh_cidr" {
-  description = "CIDR block allowed to SSH into the EC2 instance"
-  type        = string
-}
-
-variable "instance_type" {
-  description = "EC2 instance type for the web server"
-  type        = string
-  default     = "t3.micro"
 }

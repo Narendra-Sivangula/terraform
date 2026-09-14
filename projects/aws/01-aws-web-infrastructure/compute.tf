@@ -21,8 +21,8 @@ resource "aws_instance" "web" {
   ami           = data.aws_ami.amazon_linux.id
   instance_type = var.instance_type
 
-  subnet_id              = aws_subnet.public["public_1"].id
-  vpc_security_group_ids = [aws_security_group.web.id]
+  subnet_id              = module.networking.public_subnet_ids["public_1"]
+  vpc_security_group_ids = [module.security.security_group_id]
 
   user_data = <<-EOF
                 #!/bin/bash
@@ -32,7 +32,7 @@ resource "aws_instance" "web" {
                 systemctl start nginx
                 EOF
 
-  iam_instance_profile = aws_iam_instance_profile.ec2.name
+  iam_instance_profile = module.iam.instance_profile_name
   tags = merge(local.common_tags, {
     Name = "${local.name_prefix}-web-server"
   })
